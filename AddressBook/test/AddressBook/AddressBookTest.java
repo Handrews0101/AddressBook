@@ -54,11 +54,18 @@ class AddressBookTest {
         addressBook.add(p1);
         addressBook.add(p2);
         addressBook.add(p3);
+
+        // Deletes p3 from the table view
         addressBook.remove(2);
         // Test 2 element Array
+        // Checks to see if just p1 and p2 are in the table view
         assertArrayEquals(personAr2,addressBook.getPersons());
-        //Test 1 element Array
+
+        // Test 1 element Array
+        // Deletes p2 from table view
         addressBook.remove(1);
+
+        // Checks to see if just p1 is in the table view
         assertArrayEquals(personAr1, addressBook.getPersons());
     }
 
@@ -68,5 +75,14 @@ class AddressBookTest {
 
     @Test
     void clear() {
+        addressBook.add(p1);
+        addressBook.add(p2);
+
+        // check to see if the persons were added to the table view
+        assertEquals(2, addressBook.getPersons().length);
+
+        // make sure the persons in the table view were cleared
+        addressBook.clear();
+        assertEquals(0, addressBook.getPersons().length);
     }
 }
